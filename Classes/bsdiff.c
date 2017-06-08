@@ -578,7 +578,10 @@ int ff_patch(const char *oldf, const char *patchf, const char *newf) {
     }
     
     /* Check for appropriate magic */
-    if (memcmp(header, "LBDIFFXX", 8) != 0)
+
+	// had to change this to use patches created with command line bsdiff
+	//    if (memcmp(header, "LBDIFFXX", 8) != 0)
+	if (memcmp(header, "BSDIFF40", 8) != 0)
     {
         return LBD_ERR_CORRUPT;
     }
